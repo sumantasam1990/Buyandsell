@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    private navctrl: NavController,
+  ) {
+    window.addEventListener('statusTap', function () {
+      alert('tapped')
+    });
+
+    StatusBar.setOverlaysWebView({ overlay: false });
+
+    StatusBar.setStyle({ style: Style.Dark });
+
+    this.navctrl.navigateRoot('')
+  }
 }

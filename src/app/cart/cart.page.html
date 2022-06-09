@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start" color="light"></ion-back-button>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid *ngIf="cartItems.length > 0">
+    <ion-row>
+      <ion-col size="4">
+        <ion-label>
+          <p>Image</p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="4">
+        <ion-label>
+          <p>Name</p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <p>Quantit</p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-label>
+          <p>Price</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="cartItems.length > 0">
+    <ion-row *ngFor="let cart of cartItems">
+      <ion-col size="1">
+        <ion-button (click)="removeCart(cart.id)" size="small" fill="clear" color="dark">
+          <ion-icon size="" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-img [src]="'https://buyandsell.click/images/'+cart.prod_image"></ion-img>
+      </ion-col>
+      <ion-col size="4">
+        {{ cart.prod_name }}
+      </ion-col>
+      <ion-col size="2">
+        {{ cart.prod_quantity }}
+      </ion-col>
+      <ion-col size="2">
+        ${{ cart.prod_price }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="cartItems.length == 0" class="no-data">
+    <ion-row>
+      <ion-col>
+        <ion-text color="medium">
+          <h4>No product found on the cart.</h4>
+        </ion-text>
+        <ion-button (click)="continue_shopping()" color="primary" size="large" fill="solid" expand="block">Continue
+          Shopping</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-label style="text-align: right; margin-right: 12px;">
+      <h2>Subtotal: ${{ total }}</h2>
+      <h1>Total: ${{ total }}</h1>
+    </ion-label>
+    <ion-button (click)="continue_shopping()" color="primary" size="large" fill="solid" expand="block">
+      <ion-icon name="cart-outline"></ion-icon> Checkout
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

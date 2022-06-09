@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { StatusBar } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,30 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  @ViewChild("header") header: HTMLElement;
+
+  constructor(
+    public element: ElementRef,
+    public renderer: Renderer2,
+
+  ) {}
+
+  ionViewWillEnter() {
+    this.renderer.setStyle(this.header['el'], 'webkitTransition', 'top 900ms');
+  }
+
+  onContentScroll(event) {
+    if (event.detail.scrollTop >= 140 && event.detail.deltaY > 0) {
+      this.renderer.setStyle(this.header['el'], 'top', '-300px');
+      StatusBar.hide()
+    } else {
+      this.renderer.setStyle(this.header['el'], 'top', '0px');
+
+    }
+
+    if(event.detail.scrollTop == 0) {
+      StatusBar.show()
+    }
+  }
 
 }

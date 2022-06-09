@@ -1,0 +1,12 @@
+<ion-toolbar color="primary">
+  <ion-slides pager="false" scrollbar="true" [options]="slideOpts">
+
+    <ion-slide *ngFor="let category of categories">
+      <ion-label>
+        <h5>{{ category.cate_title.substring(0,10) }}</h5>
+      </ion-label>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-toolbar>

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start" color="light"></ion-back-button>
+    <ion-button slot="end">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let image of product_images">
+      <img [src]="'https://buyandsell.click/images/'+image.pro_img_path">
+    </ion-slide>
+  </ion-slides>
+
+  <div class="content">
+    <ion-label>
+      <p>Sports</p>
+    </ion-label>
+    <ion-text>
+      <p style="font-size: 1.1rem; font-weight: 600;">
+        <ion-icon size="medium" color="success" name="star-half-outline"></ion-icon>
+        {{ rating != null ? rating : '0.0' }} of
+        100+
+      </p>
+      <h2>{{ prod_title }}</h2>
+      <p>Condition: {{ prod_condition }}</p>
+
+
+      <h4>
+        <ion-text color="primary" *ngIf="prod_quantity > 0">In Stock</ion-text>
+        <ion-text color="danger" *ngIf="prod_quantity == 0">Out Of Stock</ion-text>
+      </h4>
+      <p>
+        <ion-text color="medium">Quantity Left: {{ prod_quantity }} pcs.</ion-text>
+      </p>
+      <p class="price">
+        <ion-text color="danger">${{ prod_price }}</ion-text>
+      </p>
+    </ion-text>
+
+
+    <ion-label>
+      <p>Usually takes {{ prod_delivery_days }} days to deliver</p>
+      <p>Free Shipping</p>
+      <p>Seller not paid by BuyAndSell until item(s) is delivered</p>
+      <p>Pay with multiple payment method</p>
+    </ion-label>
+
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <h1>Description</h1>
+          </ion-card-header>
+          <ion-card-content class="wrap">
+            <div class="wrap" [innerHtml]="prod_long"></div>
+            <!-- <ion-label>
+              <p>{{ prod_long }}</p>
+            </ion-label> -->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="addToCart()" color="primary" style="margin-top: 10px;" fill="solid" size="large"
+          expand="block">
+          <ion-icon name="cart-outline"></ion-icon> Add to cart
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+
+  </ion-toolbar>
+</ion-footer>

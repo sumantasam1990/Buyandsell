@@ -1,0 +1,19 @@
+.content {
+  background-color: #ade8f4;
+  padding: 12px;
+
+  ion-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  ion-label {
+    .price {
+      color: #3880ff;
+      font-size: 1.1em;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+  }
+}

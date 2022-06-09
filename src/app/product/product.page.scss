@@ -1,0 +1,19 @@
+ion-content {
+  .content {
+    padding: 14px;
+  }
+
+  .price {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .wrap {
+    width: 100%;
+    overflow: scroll;
+  }
+
+  ion-slide {
+    height: 200px;
+  }
+}
