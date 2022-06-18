@@ -10,12 +10,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ],
+  imports: [BrowserModule, IonicModule.forRoot(
+    {
+      //mode: 'md'
+    }
+  ), AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule, ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
   bootstrap: [AppComponent],
 })

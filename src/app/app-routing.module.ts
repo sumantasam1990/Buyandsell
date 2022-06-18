@@ -25,6 +25,42 @@ const routes: Routes = [
   {
     path: 'cart',
     loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
+  {
+    path: 'payment/:address',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'placeordersuccess',
+    loadChildren: () => import('./placeordersuccess/placeordersuccess.module').then( m => m.PlaceordersuccessPageModule)
+  },
+  {
+    path: 'placeorderfailed',
+    loadChildren: () => import('./placeorderfailed/placeorderfailed.module').then( m => m.PlaceorderfailedPageModule)
+  },
+  {
+    path: 'myorders',
+    loadChildren: () => import('./myorders/myorders.module').then( m => m.MyordersPageModule)
+  },
+  {
+    path: 'addnewaddress',
+    loadChildren: () => import('./addnewaddress/addnewaddress.module').then( m => m.AddnewaddressPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'myaccount',
+    loadChildren: () => import('./myaccount/myaccount.module').then( m => m.MyaccountPageModule)
+  },
+  {
+    path: 'changepassword',
+    loadChildren: () => import('./changepassword/changepassword.module').then( m => m.ChangepasswordPageModule)
   }
 ];
 @NgModule({

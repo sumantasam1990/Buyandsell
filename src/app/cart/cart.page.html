@@ -71,12 +71,12 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-label style="text-align: right; margin-right: 12px;">
       <h2>Subtotal: ${{ total }}</h2>
       <h1>Total: ${{ total }}</h1>
     </ion-label>
-    <ion-button (click)="continue_shopping()" color="primary" size="large" fill="solid" expand="block">
+    <ion-button (click)="checkout()" color="primary" size="large" fill="solid" expand="block">
       <ion-icon name="cart-outline"></ion-icon> Checkout
     </ion-button>
   </ion-toolbar>

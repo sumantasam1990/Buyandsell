@@ -30,8 +30,8 @@ export class CartPage implements OnInit {
   async createSqlLiteDB() {
     await this.platform.ready().then(() => {
       this.sqlite.create({
-    name: 'buyandsell_cart.db',
-    location: 'default'
+      name: 'buyandsell_cart.db',
+      location: 'default'
   })
     .then((db: SQLiteObject) => {
 
@@ -90,7 +90,9 @@ export class CartPage implements OnInit {
     }).catch(e => alert('error'))
   }
 
-
+checkout() {
+  this.router.navigate(['checkout'])
+}
 
 
 

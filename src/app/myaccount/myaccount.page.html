@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-back-button slot="start" color="dark"></ion-back-button>
+    <ion-title>My Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>
+        Name
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        <p>{{ name }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>
+        Contact Info
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        <h3>Email</h3>
+        <p>{{ email }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <h3>Phone</h3>
+        <p>{{ phone }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>
+        Personal Info
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        <h3>Delivery Address (Primary)</h3>
+        <p>{{ address }}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

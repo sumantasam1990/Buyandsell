@@ -3,24 +3,26 @@
     <ion-img src="https://thedailyplanet.app/images/bescrow.png"></ion-img>
     <ion-label>
       <h2>Login in to Buyandsell</h2>
-      <p>Don't have an account? <ion-text (click)="signup()" color="danger">Sign Up</ion-text></p>
+      <p>Don't have an account? <ion-text (click)="signup()" color="danger">Sign Up</ion-text>
+      </p>
     </ion-label>
 
     <ion-item style="margin-top: 20px;">
 
-      <ion-input placeholder="Email"></ion-input>
+      <ion-input type="email" inputmode="email" placeholder="Email" [(ngModel)]="log.email" name="email"></ion-input>
     </ion-item>
 
     <ion-item style="margin-top: 20px;">
 
-      <ion-input placeholder="Password"></ion-input>
+      <ion-input type="password" inputmode="password" placeholder="Password" [(ngModel)]="log.pass" name="pass">
+      </ion-input>
     </ion-item>
 
     <ion-button (click)="login()" color="primary" expand="block">Login</ion-button>
 
-    <ion-label>
+    <!-- <ion-label>
       <ion-button fill="clear" color="dark">Forgot password?</ion-button>
-    </ion-label>
+    </ion-label> -->
   </div>
 
 

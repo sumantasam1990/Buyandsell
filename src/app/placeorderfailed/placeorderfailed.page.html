@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button color="light" slot="start"></ion-back-button>
+    <ion-title>Success</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-page" id="ion-page">
+    <div class="flex">
+      <ion-img src="../../assets//icon/cancel.png" style="width: 120px;"></ion-img>
+      <ion-text color="danger">
+        <h1>Error 😀</h1>
+        <h5>Order not placed</h5>
+      </ion-text>
+      <ion-button (click)="cart()" color="primary" expand="block" fill="solid">Continue Shopping</ion-button>
+    </div>
+  </div>
+</ion-content>

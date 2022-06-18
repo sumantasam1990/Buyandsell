@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestApiService } from '../rest-api.service';
 
 
@@ -21,12 +22,17 @@ export class SlidingcategoryComponent implements OnInit {
 
   constructor(
     private restApi: RestApiService,
+    private router: Router,
   ) { }
 
   async ngOnInit() {
     await this.restApi.getData(this.url).then(res => {
       this.categories = res;
     })
+  }
+
+  product_list(id) {
+    this.router.navigate(['productlist', id])
   }
 
 }

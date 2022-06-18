@@ -126,4 +126,8 @@ export class ProductPage implements OnInit {
     await loading.present();
   }
 
+  cart() {
+    this.router.navigate(['cart']);
+  }
+
 }

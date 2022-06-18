@@ -19,6 +19,12 @@ export class AppComponent {
 
     StatusBar.setStyle({ style: Style.Dark });
 
-    this.navctrl.navigateRoot('')
+    //localStorage.clear()
+    if(localStorage.getItem("u_id") && localStorage.getItem("u_email")) {
+      this.navctrl.navigateRoot('');
+    } else {
+      this.navctrl.navigateRoot('login');
+    }
+
   }
 }

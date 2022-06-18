@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start" color="light"></ion-back-button>
+    <ion-title>My orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item lines="inset" *ngFor="let item of orders">
+
+      <ion-label class="ion-text-wrap">
+        <p>Seller: {{ item.seller_comp_name }}</p>
+        <h2>{{ item.prod_title }}</h2>
+        <p>Condition: {{ item.prod_cndtn }}</p>
+        <p>Quantity: {{ item.ord_quantity }}</p>
+        <p>Order ID: {{ item.ord_uniq_id }}</p>
+        <p>Order Amount: {{ item.ord_amount }} {{ item.ord_currency }}</p>
+        <p>Order Paid Amount: {{ item.ord_paid_amount }} {{ item.ord_currency }}</p>
+        <p>Delivery to: {{ item.ord_delivery_add }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
