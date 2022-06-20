@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import { LoadingController, Platform } from '@ionic/angular';
+import { LoadingController, ModalController, Platform, IonRouterOutlet } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestApiService } from '../rest-api.service';
+import { PaymentPage } from '../payment/payment.page';
+import { LoginPage } from '../login/login.page';
 
 
 @Component({
@@ -30,6 +32,8 @@ export class CheckoutPage implements OnInit {
     private router: Router,
     private loading: LoadingController,
     private restApi: RestApiService,
+    private modalController: ModalController,
+    private routerOutlet: IonRouterOutlet,
 
   ) {
 
@@ -47,9 +51,28 @@ export class CheckoutPage implements OnInit {
 
 
 
-  place_order() {
-    //alert(this.address)
-    this.router.navigate(['payment', this.address])
+  async place_order() {
+
+    const modal = await this.modalController.create({
+    component: PaymentPage,
+    cssClass: 'my-custom-class',
+    initialBreakpoint: 0.6,
+    breakpoints: [0, 0.6],
+    swipeToClose: false,
+    //presentingElement: this.routerOutlet.nativeEl,
+    componentProps: {
+      'address': this.address
+
+    }
+  });
+
+    if(this.address != undefined) {
+      return await modal.present();
+    } else {
+      alert("Please choose your delivery address first.")
+    }
+
+    //this.router.navigate(['payment', this.address])
   }
 
 

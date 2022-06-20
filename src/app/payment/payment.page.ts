@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   StripeService,
@@ -11,7 +11,7 @@ import {
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import { LoadingController, Platform } from '@ionic/angular';
+import { LoadingController, ModalController, Platform } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -51,7 +51,9 @@ export class PaymentPage implements OnInit {
   private storage: SQLiteObject;
   cartItems: any = []
   total: number = 0
-  address: string
+  //address: string
+
+  @Input() address: string; // Component Props from checkout sheet modal
 
   constructor(
     private fb: FormBuilder,
@@ -62,11 +64,12 @@ export class PaymentPage implements OnInit {
     private platform: Platform,
     private loadingctrl: LoadingController,
     private route: ActivatedRoute,
+    private modalController: ModalController,
   ) { }
 
   async ngOnInit() {
 
-    this.address = this.route.snapshot.paramMap.get('address')
+    //this.address = this.route.snapshot.paramMap.get('address')
 
 
     this.paymentForm = this.fb.group({
@@ -255,6 +258,14 @@ export class PaymentPage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+  }
+
+  dismiss() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 
 }
