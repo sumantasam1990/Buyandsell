@@ -24,10 +24,16 @@ export class CartPage implements OnInit {
   }
 
    async ngOnInit() {
-      await this.createSqlLiteDB()
+      //await this.createSqlLiteDB()
+  }
+
+  async ionViewDidEnter() {
+    await this.createSqlLiteDB()
   }
 
   async createSqlLiteDB() {
+    this.total = 0
+    this.cartItems = []
     await this.platform.ready().then(() => {
       this.sqlite.create({
       name: 'buyandsell_cart.db',

@@ -2,4 +2,19 @@ ion-content {
   ion-button {
     margin-top: 22px;
   }
+
+  ion-input {
+    --background: #eeeeee;
+    --color: #000000;
+    --placeholder-color: #000000;
+    border-radius: 8px;
+    --padding-start: 8px;
+    margin-bottom: 10px;
+  }
+
+  .stripe-container {
+    border-radius: 8px;
+    background-color: #eeeeee;
+    padding-left: 8px;
+  }
 }

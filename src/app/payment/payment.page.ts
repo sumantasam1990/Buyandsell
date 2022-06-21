@@ -28,11 +28,14 @@ export class PaymentPage implements OnInit {
   cardOptions: StripeCardElementOptions = {
     style: {
       base: {
-        iconColor: '#666EE8',
-        color: '#31325F',
+        lineHeight: '1.989',
+
+        padding: '5px 10px 5px 10px',
+        iconColor: '#000000',
+        color: '#000000',
         fontWeight: 400,
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '20px',
+        fontSize: '18px',
         '::placeholder': {
           color: '#888888'
         }

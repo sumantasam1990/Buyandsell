@@ -42,11 +42,17 @@ export class CheckoutPage implements OnInit {
   async ngOnInit() {
     this.uid = localStorage.getItem('u_id')
       await this.createSqlLiteDB()
-      await this.restApi.getData(this.url + this.uid).then(res => {
+      // await this.restApi.getData(this.url + this.uid).then(res => {
+      //   this.addressess = res
+
+      // })
+
+  }
+
+  async ionViewDidEnter() {
+    await this.restApi.getData(this.url + this.uid).then(res => {
         this.addressess = res
-
       })
-
   }
 
 

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="light">
     <ion-back-button color="light" slot="start"></ion-back-button>
-    <ion-title>Pay With Stripe</ion-title>
+    <ion-title>Payment</ion-title>
     <ion-button fill="clear" color="danger" slot="end" (click)="dismiss()">Close</ion-button>
   </ion-toolbar>
 
@@ -9,24 +9,40 @@
 
 <ion-content class="ion-padding">
 
+  <ion-label>
+    <p>Pay with your Credit Card / Debit Card</p>
+  </ion-label>
 
-  <div [formGroup]="paymentForm">
-    <ion-input type="text" formControlName="name"></ion-input>
-    <ngx-stripe-card [options]="cardOptions" (on)="onChange($event)" [elementsOptions]="elementsOptions">
-    </ngx-stripe-card>
-    <ion-button size="large" color="success" expand="block" (click)="buy()">Pay Now</ion-button>
-  </div>
-
-  <!-- <div class="col-md-12" [formGroup]="paymentForm">
-    <div class="form-group">
-      <label>Name</label>
-      <input class="form-control" type="text" formControlName="name">
-    </div>
-    <div class="form-group">
+  <div [formGroup]="paymentForm" style="margin-top: 14px;">
+    <ion-input type="text" formControlName="name" placeholder="Name on card"></ion-input>
+    <div class="stripe-container">
       <ngx-stripe-card [options]="cardOptions" (on)="onChange($event)" [elementsOptions]="elementsOptions">
       </ngx-stripe-card>
     </div>
-    <button class="btn btn-success" (click)="buy()">CLICK</button>
-  </div> -->
 
+    <ion-button size="large" color="success" expand="block" (click)="buy()">Pay Now</ion-button>
+  </div>
+
+
+
+  <div
+    style="margin-top: 20px; display: flex; flex-direction: row; align-items:center; justify-content: center; margin-bottom: 12px;">
+    <ion-img style="width: 32px; margin-right: 4px;" src="https://cdn-icons-png.flaticon.com/512/217/217425.png">
+    </ion-img>
+    <ion-img style="width: 32px; margin-right: 4px;" src="https://cdn-icons-png.flaticon.com/512/349/349228.png">
+    </ion-img>
+    <ion-img style="width: 32px; margin-right: 4px;" src="https://cdn-icons-png.flaticon.com/512/217/217445.png">
+    </ion-img>
+    <ion-img style="width: 32px; margin-right: 4px;" src="https://cdn-icons-png.flaticon.com/512/349/349230.png">
+    </ion-img>
+    <ion-img style="width: 32px; margin-right: 4px;" src="https://cdn-icons-png.flaticon.com/512/5968/5968382.png">
+    </ion-img>
+
+
+  </div>
+  <ion-label style="text-align: center; margin-top: 20px;">
+    <p>
+      128 Bit SSL Encrypted <ion-icon name="lock-closed"></ion-icon>
+    </p>
+  </ion-label>
 </ion-content>

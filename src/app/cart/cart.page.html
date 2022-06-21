@@ -7,7 +7,7 @@
 
 <ion-content>
 
-  <ion-grid *ngIf="cartItems.length > 0">
+  <!-- <ion-grid *ngIf="cartItems.length > 0">
     <ion-row>
       <ion-col size="4">
         <ion-label>
@@ -52,7 +52,28 @@
         ${{ cart.prod_price }}
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
+
+  <ion-list lines="full" *ngIf="cartItems.length > 0">
+    <ion-list-header>
+      <ion-label>
+        <h2>Cart Items</h2>
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let cart of cartItems">
+      <ion-thumbnail slot="start">
+        <img [src]="'https://buyandsell.click/images/'+cart.prod_image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ cart.prod_name }}</h2>
+        <p>Quantity: {{ cart.prod_quantity }}</p>
+        <p>${{ cart.prod_price }}</p>
+      </ion-label>
+      <ion-button slot="end" (click)="removeCart(cart.id)" size="small" fill="clear" color="dark">
+        <ion-icon size="" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 
   <ion-grid *ngIf="cartItems.length == 0" class="no-data">
     <ion-row>
@@ -76,7 +97,8 @@
       <h2>Subtotal: ${{ total }}</h2>
       <h1>Total: ${{ total }}</h1>
     </ion-label>
-    <ion-button (click)="checkout()" color="primary" size="large" fill="solid" expand="block">
+    <ion-button [disabled]="cartItems.length === 0" (click)="checkout()" color="primary" size="large" fill="solid"
+      expand="block">
       <ion-icon name="cart-outline"></ion-icon> Checkout
     </ion-button>
   </ion-toolbar>
