@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'click.buyandsell.shop',
   appName: 'Buyandsell',
   webDir: 'www',
   bundledWebRuntime: false
