@@ -13,8 +13,8 @@ export class SlidingcategoryComponent implements OnInit {
   slideOpts = {
     initialSlide: 0,
     speed: 400,
-    spaceBetween: 10,
-    slidesPerView: 5
+    //spaceBetween: 2,
+    slidesPerView: 6
   };
 
   url: string = 'https://buyandsell.click/api/buyandsell/category';

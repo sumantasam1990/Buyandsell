@@ -3,22 +3,38 @@
     <ion-title>
       Buyandsell
     </ion-title>
-    <!-- <ion-button slot="end">
-      <ion-icon name="heart-outline"></ion-icon>
-    </ion-button> -->
+    <ion-button slot="end" fill="clear" color="light">
+      <ion-icon slot="" name="search-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
-  <ion-toolbar color="primary">
+  <!-- <ion-toolbar color="primary">
     <ion-searchbar color="light" debounce="500"></ion-searchbar>
+  </ion-toolbar> -->
+  <!-- <app-slidingcategory></app-slidingcategory> -->
+  <ion-toolbar color="secondary">
+    <ion-slides pager="false" scrollbar="true" [options]="slideOpts">
+
+      <ion-slide *ngFor="let category of categories" (click)="product_list(category.cate_id)">
+
+        <ion-label>
+          <ion-icon *ngIf="category.cate_img != 'none'" size="large" name="{{ category.cate_img }}">
+          </ion-icon>
+          <!-- <p>{{ category.cate_title }}</p> -->
+        </ion-label>
+
+      </ion-slide>
+
+    </ion-slides>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen scrollEvents="true" (ionScroll)='onContentScroll($event)'>
-  <!-- <ion-header collapse="condense" color="primary">
-    <ion-toolbar color="primary">
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
 
-  </ion-header> -->
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>

@@ -5,11 +5,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-no-padding">
   <ion-list>
 
     <ion-list-header>
       <ion-label>
+        <h1>
+          <ion-text color="tertiary">Free Shipping</ion-text>
+        </h1>
         <h2>Delivery to</h2>
       </ion-label>
       <ion-button (click)="addnewaddress()" fill="clear" color="danger">
@@ -111,7 +114,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer mode="ios">
   <ion-toolbar color="success">
     <ion-button (click)="place_order()" color="success" size="large" fill="solid" expand="block">
       <ion-icon name="card-outline"></ion-icon> Place Order

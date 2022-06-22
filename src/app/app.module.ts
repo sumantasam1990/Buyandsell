@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(
     {
-      //mode: 'md'
+      mode: 'md'
     }
   ), AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule, ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
