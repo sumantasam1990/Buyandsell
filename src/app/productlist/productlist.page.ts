@@ -14,6 +14,8 @@ export class ProductlistPage implements OnInit {
   url: string = 'https://buyandsell.click/api/buyandsell/catproducts/'
   products: any = []
 
+  count : number = 0;
+
 
   constructor(
     private actionSheetController: ActionSheetController,
@@ -73,5 +75,19 @@ export class ProductlistPage implements OnInit {
     });
     await actionSheet.present();
   }
+
+
+tapEvent(){
+this.count++;
+setTimeout(() => {
+  if (this.count == 1) {
+    //this.count = 0;
+    alert('Title');
+  }if(this.count == 2){
+    this.count = 0;
+    alert('go to product page');
+  }
+}, 250);
+}
 
 }

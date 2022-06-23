@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
+import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { RestApiService } from '../rest-api.service';
+import { SearchPage } from '../search/search.page';
 
 @Component({
   selector: 'app-tab1',
@@ -22,11 +24,17 @@ export class Tab1Page implements OnInit {
   url: string = 'https://buyandsell.click/api/buyandsell/category';
   categories: any = [];
 
+  count: number = 0
+  countId: any = 0
+
   constructor(
     public element: ElementRef,
     public renderer: Renderer2,
     private router: Router,
     private restApi: RestApiService,
+    private alertController: AlertController,
+    private modalController: ModalController,
+    private routerOutlet: IonRouterOutlet,
 
   ) {}
 
@@ -68,8 +76,41 @@ export class Tab1Page implements OnInit {
     }, 2000);
   }
 
-  product_list(id) {
-    this.router.navigate(['productlist', id])
+  product_list(id,name) {
+    this.presentAlertConfirm(id,name)
+
+
+  }
+
+  async presentAlertConfirm(id,name) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: name,
+      message: 'Want to see products of this category?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          id: 'confirm-button',
+          handler: () => {
+            this.router.navigate(['productlist', id])
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async search() {
+    this.router.navigate(['search'])
   }
 
 }

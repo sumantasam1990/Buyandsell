@@ -19,6 +19,8 @@ export class SlidingcategoryComponent implements OnInit {
 
   url: string = 'https://buyandsell.click/api/buyandsell/category';
   categories: any = [];
+  count: number = 0
+  countId: any = 0
 
   constructor(
     private restApi: RestApiService,
@@ -32,7 +34,16 @@ export class SlidingcategoryComponent implements OnInit {
   }
 
   product_list(id) {
-    this.router.navigate(['productlist', id])
+    if(this.count == 0 && this.countId == 0) {
+      this.count = 1
+      this.countId = id
+      alert('title')
+    } else if(this.count == 1 && this.countId == id) {
+      this.router.navigate(['productlist', id])
+    } else {
+      alert('else')
+    }
+
   }
 
 }

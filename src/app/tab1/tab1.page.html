@@ -3,7 +3,7 @@
     <ion-title>
       Buyandsell
     </ion-title>
-    <ion-button slot="end" fill="clear" color="light">
+    <ion-button (click)="search()" slot="end" fill="clear" color="light">
       <ion-icon slot="" name="search-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -14,7 +14,7 @@
   <ion-toolbar color="secondary">
     <ion-slides pager="false" scrollbar="true" [options]="slideOpts">
 
-      <ion-slide *ngFor="let category of categories" (click)="product_list(category.cate_id)">
+      <ion-slide *ngFor="let category of categories" (click)="product_list(category.cate_id, category.cate_title)">
 
         <ion-label>
           <ion-icon *ngIf="category.cate_img != 'none'" size="large" name="{{ category.cate_img }}">
