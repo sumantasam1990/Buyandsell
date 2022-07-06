@@ -32,3 +32,18 @@
 input {
   border-radius: 8px !important;
 }
+
+.buttonCss {
+  --background: #ffc409;
+}
+
+.buttonCss {
+
+  button.alert-button:nth-child(1) {
+    color: #444444;
+  }
+
+  button.alert-button:nth-child(2) {
+    color: #000000;
+  }
+}

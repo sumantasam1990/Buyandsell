@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   api: 'https://j3x0ln9gj7.execute-api.ap-northeast-1.amazonaws.com/dev/',
+  publishable_key: 'pk_test_51IOaN8JIlVvxjrBSWzczcNgsEKmvJ37qWjEjcjZVWKaeUVyqzk2LnYJnbZoJBae8eCIZuc2YPqKDvflyXLYJfjvq0051nQ2cil'
 };
 
 /*

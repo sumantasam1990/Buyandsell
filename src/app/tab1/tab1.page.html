@@ -3,12 +3,18 @@
     <ion-thumbnail slot="start">
       <ion-img src="https://thedailyplanet.app/images/bescrow.png"></ion-img>
     </ion-thumbnail>
-    <ion-title size="large" style="margin-left: 40px; margin-top: -8px;">
+    <ion-title *ngIf="whichPlatform == 'iphone'" size="large" style="margin-left: 40px; margin-top: -2px;">
       Buyandsell
     </ion-title>
-    <ion-button (click)="search()" slot="end" fill="clear" color="light">
-      <ion-icon slot="" name="search-outline"></ion-icon>
-    </ion-button>
+    <ion-title *ngIf="whichPlatform != 'iphone'" size="large" style="margin-left: -10px; margin-top: -2px;">
+      Buyandsell
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="search()" fill="clear" color="light">
+        <ion-icon size="large" slot="" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
   <!-- <ion-toolbar color="primary">
     <ion-searchbar color="light" debounce="500"></ion-searchbar>

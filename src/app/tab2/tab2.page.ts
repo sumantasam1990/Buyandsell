@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { RestApiService } from '../rest-api.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class Tab2Page implements OnInit {
     private restApi: RestApiService,
     private router: Router,
     private loadingctrl: LoadingController,
+    private alertController: AlertController,
   ) {}
 
   async ngOnInit() {
@@ -29,7 +30,12 @@ export class Tab2Page implements OnInit {
   }
 
   product_list(id) {
-    this.router.navigate(['productlist', id])
+    if(id == 38) {
+      this.presentAlertPrompt(id)
+    } else {
+      this.router.navigate(['productlist', id])
+    }
+
   }
 
   async presentLoading() {
@@ -42,6 +48,36 @@ export class Tab2Page implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+  }
+
+
+
+
+  async presentAlertPrompt(id) {
+    const alert = await this.alertController.create({
+      cssClass: 'buttonCss',
+      header: 'Warning!',
+      message: 'Are you 18+ ?',
+      backdropDismiss: false,
+
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            //console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.router.navigate(['productlist', id])
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

@@ -130,4 +130,8 @@ export class ProductPage implements OnInit {
     this.router.navigate(['cart']);
   }
 
+  view_photo(url) {
+    this.router.navigate(['photoviewfinder', url])
+  }
+
 }

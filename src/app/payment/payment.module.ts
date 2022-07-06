@@ -9,6 +9,8 @@ import { PaymentPageRoutingModule } from './payment-routing.module';
 import { PaymentPage } from './payment.page';
 import { NgxStripeModule } from 'ngx-stripe';
 
+import { environment } from '../../environments/environment';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +19,7 @@ import { NgxStripeModule } from 'ngx-stripe';
     PaymentPageRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxStripeModule.forRoot('pk_test_51IOaN8JIlVvxjrBSWzczcNgsEKmvJ37qWjEjcjZVWKaeUVyqzk2LnYJnbZoJBae8eCIZuc2YPqKDvflyXLYJfjvq0051nQ2cil'),
+    NgxStripeModule.forRoot(environment.publishable_key),
   ],
   declarations: [PaymentPage]
 })

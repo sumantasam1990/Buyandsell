@@ -16,7 +16,7 @@
   <div [formGroup]="paymentForm" style="margin-top: 14px;">
     <ion-input type="text" formControlName="name" placeholder="Name on card"></ion-input>
     <div class="stripe-container">
-      <ngx-stripe-card [options]="cardOptions" (on)="onChange($event)" [elementsOptions]="elementsOptions">
+      <ngx-stripe-card [options]="cardOptions" (on)="onChange($any($event))" [elementsOptions]="elementsOptions">
       </ngx-stripe-card>
     </div>
 

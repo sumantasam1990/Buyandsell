@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
-import { AlertController, IonRouterOutlet, ModalController } from '@ionic/angular';
+import { AlertController, IonRouterOutlet, ModalController, Platform } from '@ionic/angular';
 import { RestApiService } from '../rest-api.service';
 import { SearchPage } from '../search/search.page';
 
@@ -27,6 +27,8 @@ export class Tab1Page implements OnInit {
   count: number = 0
   countId: any = 0
 
+  whichPlatform: string
+
   constructor(
     public element: ElementRef,
     public renderer: Renderer2,
@@ -35,10 +37,14 @@ export class Tab1Page implements OnInit {
     private alertController: AlertController,
     private modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
+    private platform: Platform,
 
   ) {}
 
   async ngOnInit() {
+    if(this.platform.is('iphone')) {
+      this.whichPlatform = 'iphone'
+    }
       await this.restApi.getData(this.url).then(res => {
       this.categories = res;
     })
@@ -77,9 +83,11 @@ export class Tab1Page implements OnInit {
   }
 
   product_list(id,name) {
-    this.presentAlertConfirm(id,name)
-
-
+    if(id == 38) {
+      this.presentAlertPrompt(id)
+    } else {
+      this.presentAlertConfirm(id,name)
+    }
   }
 
   async presentAlertConfirm(id,name) {
@@ -111,6 +119,33 @@ export class Tab1Page implements OnInit {
 
   async search() {
     this.router.navigate(['search'])
+  }
+
+  async presentAlertPrompt(id) {
+    const alert = await this.alertController.create({
+      cssClass: 'buttonCss',
+      header: 'Warning!',
+      message: 'Are you 18+ ?',
+      backdropDismiss: false,
+
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            //console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.router.navigate(['productlist', id])
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

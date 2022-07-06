@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide *ngFor="let image of product_images">
+    <ion-slide (click)="view_photo(image.pro_img_path)" *ngFor="let image of product_images">
       <img [src]="'https://buyandsell.click/images/'+image.pro_img_path">
     </ion-slide>
   </ion-slides>

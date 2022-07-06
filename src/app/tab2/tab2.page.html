@@ -11,9 +11,9 @@
 
 <ion-content>
 
-  <ion-item detail (click)="product_list(cate.cate_id)" *ngFor="let cate of categories" button="true" lines="inset">
-    <ion-icon slot="start" color="primary" *ngIf="cate.cate_img != 'none'" name="{{ cate.cate_img }}"></ion-icon>
-    <ion-icon slot="start" color="primary" *ngIf="cate.cate_img == 'none'" name="bag-handle-outline">
+  <ion-item detail (click)="product_list(cate.cate_id)" *ngFor="let cate of categories" button="true" lines="none">
+    <ion-icon slot="start" *ngIf="cate.cate_img != 'none'" name="{{ cate.cate_img }}"></ion-icon>
+    <ion-icon slot="start" *ngIf="cate.cate_img == 'none'" name="bag-handle-outline">
     </ion-icon>
     <ion-label>
       <h2>{{ cate.cate_title }}</h2>

@@ -65,6 +65,10 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'photoviewfinder/:url',
+    loadChildren: () => import('./photoviewfinder/photoviewfinder.module').then( m => m.PhotoviewfinderPageModule)
   }
 ];
 @NgModule({
